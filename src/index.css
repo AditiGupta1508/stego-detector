@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0B0F14;
+  --color-surface: #121821;
+  --color-surface-2: #1A222D;
+  --color-border: #263241;
+  --color-text: #E7EDF3;
+  --color-text-muted: #8CA0B3;
+  --color-scan: #00E5A0;
+  --color-alert: #FF6B4A;
+  --color-data: #4FD1FF;
+  --color-warn: #F5B942;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-scan);
+  color: #06110c;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 8px;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.grid-fade {
+  background-image:
+    linear-gradient(to right, rgba(38,50,65,0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(38,50,65,0.35) 1px, transparent 1px);
+  background-size: 42px 42px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-scanline {
+  animation: scanline 3.2s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+.animate-blink {
+  animation: blink 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
